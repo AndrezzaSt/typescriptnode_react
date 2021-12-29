@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function MyButton() {
-    const handleClick = () => {
-        alert('Hello World!');
-    };
+function CounterFunction() {
+   const [count, setCount] = useState(0);
 
-    const handleClick2 = (event: React.MouseEvent<HTMLButtonElement>) => {
-        alert('Clicked: ' + event.currentTarget.name);
-    };
+   const handleClick = () => {
+       setCount(count + 1);
+       //setCount(currentCount => currentCount + 1);
+   };
 
-    return (
-        <button onClick={handleClick2} name="hello">
-            Click Me
-        </button>
-    );
+   return (
+       <div>
+           <p>You clicked {count} times</p>
+           <button onClick={handleClick}>Click Me</button>
+       </div>
+   );
 }
+
+export default CounterFunction;

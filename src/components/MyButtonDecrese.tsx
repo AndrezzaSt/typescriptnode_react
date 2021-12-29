@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 
-
-export default function MyButton() {
-    
-    const handleClick2 = (event: React.MouseEvent<HTMLButtonElement>) => {
-        alert('Clicked: ' + event.currentTarget.name);
-    };
-
-    return (
-        <button onClick={handleClick2} name="hello">
-            Click Me
-        </button>
-    );
+interface CounterV2Props {
+    initialValue: number
 }
+
+function CounterV2(props: CounterV2Props) {
+   const [count, setCount] = useState(props.initialValue);
+
+   const handleClickIncrement = () => {
+       setCount(count + 1);
+   };
+
+   const handleClickDecrement = () => {
+       setCount(count - 1);
+   };
+
+   return (
+       <div>
+           <p>Value = {count}</p>
+           <button onClick={handleClickIncrement}>Increment</button>
+           <button onClick={handleClickDecrement}>Decrement</button>
+       </div>
+   );
+}
+
+export default CounterV2;
